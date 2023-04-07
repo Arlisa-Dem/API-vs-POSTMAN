@@ -1,11 +1,15 @@
 package get_request;
 
 import base_url.GoRestBaseUrl;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertTrue;
 
 public class Get12 extends GoRestBaseUrl {
 
@@ -51,12 +55,37 @@ public class Get12 extends GoRestBaseUrl {
                         "meta.pagination.links.current",
                         equalTo("https://gorest.co.in/public/v1/users?page=1"),
                         "data",hasSize(10),"data.status",hasItem("active"),
-                        "data.name",hasItems("Marut Nambeesan DC", "Ms. Ankal Sinha", "Chaturbhuj Adiga"));
+                        "data.name",hasItems("Sushma Somayaji", "Girika Dwivedi", "Anjali Sharma III"));
 
 
+        // The female users are less than or equals to male users
+        //I will compare number of female and male users
+        //First way--> I will get all the genders in a list then calculate the number of the females
+        JsonPath jsonPath = response.jsonPath();
+        List<String> allGenders = jsonPath.getList("data.gender");
+        System.out.println("allGenders = " + allGenders);//allGenders = [female, female, male, female, male, female, male, male, male, male]
 
+
+        int numberOfFemales = 0;
+        for (String w : allGenders) {
+            if (w.equals("female")) {
+                numberOfFemales++;
+            }
+        }
+
+        System.out.println("numberOfFemales = " + numberOfFemales);
+        assertTrue(numberOfFemales <= allGenders.size() - numberOfFemales);
+
+        //2nd Way: I will get all females by using groovy language then compare numbers.
+        int numberOfFemaleUsers = jsonPath.getList("data.findAll{it.gender=='female'}").size();
+        System.out.println("numberOfFemaleUsers = " + numberOfFemaleUsers);//4
+
+        int numberOfMaleUsers = jsonPath.getList("data.findAll{it.gender=='male'}").size();
+        System.out.println("numberOfMaleUsers = " + numberOfMaleUsers);//6
+
+        assertTrue(numberOfFemaleUsers <= numberOfMaleUsers);
 
     }
-
-
 }
+
+
