@@ -15,6 +15,7 @@ public class BookingResponsePojo {
         this.booking = booking;
     }
 
+
     public Integer getBookingid() {
         return bookingid;
     }

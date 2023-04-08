@@ -1,10 +1,8 @@
 package herokuapp_smoketest;
 
 import base_url.HerOkuAppBaseUrl;
-import io.restassured.mapper.ObjectMapper;
 import io.restassured.response.Response;
 import org.junit.Test;
-import org.junit.runner.Request;
 import pojos.BookingDatesPojo;
 import pojos.BookingPojo;
 import pojos.BookingResponsePojo;
@@ -14,6 +12,11 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
 public class S1_Post extends HerOkuAppBaseUrl {
+    /*
+Using the document "https://restful-booker.herokuapp.com/apidoc/index.html";
+Type an automation test that creates a booking, updates that booking and then deletes it.
+ Add positive and negative tests that validate these steps.
+*/
 
     /*
     Given
@@ -67,7 +70,6 @@ public class S1_Post extends HerOkuAppBaseUrl {
         spec.pathParam("first","booking");
 
         //Set te expected data
-
         BookingDatesPojo bookingDatesPojo = new BookingDatesPojo("2018-01-01","2019-01-01");
         BookingPojo expectedData = new BookingPojo("Jim","Brown",111,true,bookingDatesPojo,"Breakfast");
         System.out.println("expectedData = " + expectedData);
