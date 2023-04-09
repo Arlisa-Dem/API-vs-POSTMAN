@@ -61,7 +61,7 @@ Type an automation test that creates a booking, updates that booking and then de
      */
 
 
-
+    public static int bookingId;// We put the created bookingId into a container and use it in other classes.
 
     @Test
     public void postTest(){
@@ -97,6 +97,7 @@ Type an automation test that creates a booking, updates that booking and then de
         assertEquals(expectedData.getAdditionalneeds(), actualData.getBooking().getAdditionalneeds());
 
 
+        bookingId = actualData.getBookingid();
     }
 
 }

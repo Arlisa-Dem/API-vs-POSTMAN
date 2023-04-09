@@ -1,4 +1,4 @@
-package herokuapp_smoketest;
+package put;
 
 import base_url.HerOkuAppBaseUrl;
 import io.restassured.response.Response;
