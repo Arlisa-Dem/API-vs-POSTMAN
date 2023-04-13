@@ -8,6 +8,7 @@ import pojos.BookingPojo;
 import pojos.BookingResponsePojo;
 import utils.ObjectMapperUtils;
 
+import static herokuapp_smoketest.S1_Post.bookingId;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
@@ -58,7 +59,7 @@ When
     public void putTest(){
 
         //set the url
-        spec.pathParams("first","booking","second",1);
+        spec.pathParams("first","booking","second",bookingId);
 
 
         //Set the expected data
