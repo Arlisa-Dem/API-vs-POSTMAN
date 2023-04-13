@@ -100,21 +100,21 @@ Then
         assertEquals(expectedData.getCity(),actualData.getCity());
         assertEquals(expectedData.getSsn(),actualData.getSsn());
         assertEquals(expectedData.getCreateDate(),actualData.getCreateDate());
+        assertEquals(country.getId(),actualData.getCountry().getId());
+        assertEquals(country.getName(),actualData.getCountry().getName());
+        assertEquals(country.getStates(),actualData.getCountry().getStates());
+        assertEquals(expectedData.getState(),actualData.getState());
+        assertEquals(user.getId(),actualData.getUser().getId());
+        assertEquals(user.getLogin(),actualData.getUser().getLogin());
+        assertEquals(user.getFirstName(),actualData.getUser().getFirstName());
+        assertEquals(user.getLastName(),actualData.getUser().getLastName());
+        assertEquals(user.getEmail(),actualData.getUser().getEmail());
+        assertEquals(user.isActivated(),actualData.getUser().isActivated());
+        assertEquals(user.getLangKey(),actualData.getUser().getLangKey());
+        assertEquals(user.getImageUrl(),actualData.getUser().getImageUrl());
+        assertEquals(user.getResetDate(),actualData.getUser().getResetDate());
+        assertEquals(expectedData.getAccounts(),actualData.getAccounts());
 
-
-
-
-
-/*
- assertEquals(expectedData.getFirstname(), actualData.getBooking().getFirstname());
-        assertEquals(expectedData.getLastname(), actualData.getBooking().getLastname());
-        assertEquals(expectedData.getTotalprice(), actualData.getBooking().getTotalprice());
-        assertEquals(expectedData.getDepositpaid(), actualData.getBooking().getDepositpaid());
-        assertEquals(bookingDatesPojo.getCheckin(), actualData.getBooking().getBookingdates().getCheckin());
-        assertEquals(bookingDatesPojo.getCheckout(), actualData.getBooking().getBookingdates().getCheckout());
-        assertEquals(expectedData.getAdditionalneeds(), actualData.getBooking().getAdditionalneeds());
-
- */
 
     }
 
