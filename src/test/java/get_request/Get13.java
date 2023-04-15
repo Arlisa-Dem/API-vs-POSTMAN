@@ -80,8 +80,8 @@ And
         // Total salary of all employees is 6,644,770
         List<Integer> salaries = jsonPath.getList("data.employee_salary");
         System.out.println("salaries = " + salaries);
-
         //1-way with For Loop
+
         int sum=0;
 
         for (int w: salaries){

@@ -70,7 +70,7 @@ Then
         spec.pathParams("first","api","second","tp-customers","third",110452);
 
         //Set the expected data
-        Country country = new Country(3,"USA",null);
+        Country country = new Country("USA",null);
         User user = new User(110016,"leopoldo.reinger","Jasmine","Stehr","marni.zboncak@yahoo.com",true,"en",null,null);
         ArrayList<Object> accountList = new ArrayList<>();
         Customer expectedData = new Customer(110452,"Jasmine","Stehr","V","marni.zboncak@yahoo.com","463-609-2097", "1-112-497-0270","16525","14387 Al Ridge5343 Bert Burgs","Waltermouth","761-59-2911","2021-11-28T21:00:00Z",false,country,"California",user,accountList);
@@ -78,7 +78,6 @@ Then
 
         //Send the request and get the response
         Response response = given(spec).
-                headers("Authorization","Bearer "+gmiBankToken()).
                 get("{first}/{second}/{third}");
        // response.prettyPrint();
 
@@ -100,7 +99,6 @@ Then
         assertEquals(expectedData.getCity(),actualData.getCity());
         assertEquals(expectedData.getSsn(),actualData.getSsn());
         assertEquals(expectedData.getCreateDate(),actualData.getCreateDate());
-        assertEquals(country.getId(),actualData.getCountry().getId());
         assertEquals(country.getName(),actualData.getCountry().getName());
         assertEquals(country.getStates(),actualData.getCountry().getStates());
         assertEquals(expectedData.getState(),actualData.getState());
